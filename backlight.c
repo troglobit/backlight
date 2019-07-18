@@ -153,23 +153,43 @@ static int closest(int target, int values[], size_t num)
 	return values[mid];
 }
 
+static int dedup(int values[], size_t num)
+{
+	int i, j;
+
+	for (i = 0; i < num; i++) {
+		if (i + 1 >= num)
+			break;
+
+		if (values[i] != values[i + 1])
+			continue;
+
+		for (j = i; j < num - 1; j++)
+			values[j] = values[j + 1];
+		num--;
+	}
+
+	return num;
+}
+
 static void adjust(struct device *dev, int updown)
 {
 	float scale[] = SCALE;
 	int values[NELEMS(scale)];
-	int val, i;
+	int val, num, i;
 
 	for (i = 0; i < NELEMS(scale); i++)
 		values[i] = (int)(dev->max * scale[i] / 100);
 
-	val = closest(dev->current, values, NELEMS(scale));
-	for (i = 0; i < NELEMS(scale); i++) {
+	num = dedup(values, NELEMS(scale));
+	val = closest(dev->current, values, num);
+	for (i = 0; i < num; i++) {
 		if (values[i] == val)
 			break;
 	}
 
 	i += updown;
-	if (i >= NELEMS(scale) || i < 0)
+	if (i >= num || i < 0)
 		return;
 
 	set(dev->path, "brightness", values[i]);
