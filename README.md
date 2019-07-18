@@ -1,5 +1,6 @@
 Backlight Control
 =================
+[![License Badge][]][License] [![Travis Status][]][Travis] [![Coverity Status][]][Coverity Scan]
 
 Simple program to control backlight brightness of laptops in Linux.
 
@@ -36,3 +37,8 @@ is written from scratch.
 
 - [light](https://github.com/haikarainen/light/) 
 - [brightnessctl](https://github.com/Hummer12007/brightnessctl/)
+
+[License]:         https://en.wikipedia.org/wiki/ISC_license
+[License Badge]:   https://img.shields.io/badge/License-ISC-blue.svg
+[Travis]:          https://travis-ci.org/troglobit/backlight
+[Travis Status]:   https://travis-ci.org/troglobit/backlight.png?branch=master
