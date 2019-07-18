@@ -4,10 +4,15 @@ Backlight Control
 Simple program to control backlight brightness of laptops in Linux.
 
 ```sh
-troglobit@example:~$ backlight help
+troglobit@example:~$ backlight -h
 
 Usage: backlight [command]
 
+Options:
+ -h    This help text
+ -v    Show program version
+
+Commands:
  up    Increase brightness
  down  Decrease brightness
 
