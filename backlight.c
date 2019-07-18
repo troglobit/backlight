@@ -43,6 +43,7 @@ static int value(char *path, char *file, int val)
 	size_t len;
 	FILE *fp;
 	char *fn, *mode;
+	int rc;
 
 	len = strlen(path) + strlen(file) + 2;
 	fn = alloca(len);
@@ -58,9 +59,11 @@ static int value(char *path, char *file, int val)
 		return -1;
 
 	if (val == -1)
-		fscanf(fp, "%d", &val);
+		rc = fscanf(fp, "%d", &val);
 	else
-		fprintf(fp, "%d\n", val);
+		rc = fprintf(fp, "%d\n", val);
+	if (!rc)
+		warn("Failed %s value from %s", val == -1 ? "reading" : "writing", fn);
 
 	fclose(fp);
 
