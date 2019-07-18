@@ -1,6 +1,6 @@
 Backlight Control
 =================
-[![License Badge][]][License] [![Travis Status][]][Travis] [![Coverity Status][]][Coverity Scan]
+[![License Badge][]][License] [![Travis Status][]][Travis]
 
 Simple program to control backlight brightness of laptops in Linux.
 
