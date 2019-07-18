@@ -16,5 +16,5 @@ script:
   - make V=1 || cat config.h
   - DESTDIR=/tmp/tok make install-strip
   - tree /tmp/tok
-  - ldd /tmp/tok/bin/backlight
-  - /tmp/tok/bin/backlight -h
+  - ldd /tmp/tok/usr/bin/backlight
+  - /tmp/tok/usr/bin/backlight -h
