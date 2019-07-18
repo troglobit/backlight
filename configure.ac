@@ -1,4 +1,4 @@
-AC_INIT([backlight], [0.1], [https://github.com/troglobit/backlight/issues])
+AC_INIT([backlight], [0.2], [https://github.com/troglobit/backlight/issues])
 
 AM_INIT_AUTOMAKE([1.11 foreign])
 AM_SILENT_RULES([yes])
