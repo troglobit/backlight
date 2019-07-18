@@ -1,3 +1,4 @@
+doc_DATA           = README.md LICENSE
 bin_PROGRAMS       = backlight
 backlight_SOURCES  = backlight.c
 
