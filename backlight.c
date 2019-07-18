@@ -15,8 +15,10 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#include "config.h"
 #include <dirent.h>
 #include <err.h>
+#include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -34,8 +36,6 @@ struct device {
 	int max;
 	int current;
 };
-
-extern char *__progname;
 
 
 static int value(char *path, char *file, int val)
@@ -175,20 +175,46 @@ static void adjust(struct device *dev, int updown)
 	set(dev->path, "brightness", values[i]);
 }
 
-static void usage(void)
+static int usage(int code)
 {
-	printf("Usage: %s [command]\n"
+	printf("Usage: %s [option] [command]\n"
 	       "\n"
+	       "Options:\n"
+	       " -h    This help text\n"
+	       " -v    Show program version\n"
+	       "\n"
+	       "Commands:\n"
 	       " up    Increase brightness\n"
 	       " down  Decrease brightness\n"
 	       "\n"
-	       "Bug report address: https://github.com/troglobit/backlight/issues\n",
-		__progname);
+	       "Bug report address: %s\n", PACKAGE_NAME, PACKAGE_BUGREPORT);
+
+	return code;
+}
+
+static int version(void)
+{
+	puts(PACKAGE_VERSION);
+	return 0;
 }
 
 int main(int argc, char *argv[])
 {
 	struct device dev;
+	int c;
+
+	while ((c = getopt(argc, argv, "hv")) != EOF) {
+		switch (c) {
+		case 'h':
+			return usage(0);
+
+		case 'v':
+			return version();
+
+		default:
+			return usage(1);
+		}
+	}
 
 	if (!locate(&dev))
 		err(1, "System has no backlight control");
@@ -204,7 +230,7 @@ int main(int argc, char *argv[])
 	else if (!strcasecmp(argv[1], "down"))
 		adjust(&dev, -1);
 	else
-		usage();
+		return usage(1);
 
 	return 0;
 }
