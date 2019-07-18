@@ -3,10 +3,10 @@ Backlight Control
 
 Simple program to control backlight brightness of laptops in Linux.
 
-```sh
+```
 troglobit@example:~$ backlight -h
 
-Usage: backlight [command]
+Usage: backlight [options] [command]
 
 Options:
  -h    This help text
@@ -19,9 +19,10 @@ Commands:
 Bug report address: https://github.com/troglobit/backlight/issues
 ```
 
-The program has only two arguments: `up` and `down`, which adjusts the
+The program has only two commands: `up` and `down`, which adjusts the
 brightness up or down, respectively.  Without arguments the current
-value read from `/sys/class/backlight/*/brightness` is displayed.
+(raw) brightness value read from `/sys/class/backlight/*/brightness` is
+displayed.
 
 Brightness is controlled using an exponential scale to provide a smooth
 transition from max to min.
