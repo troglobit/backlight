@@ -29,6 +29,23 @@ Brightness is controlled using an exponential scale to provide a smooth
 transition from max to min.
 
 
+Setup in Awesome
+----------------
+
+Users of the [Awesome WM][] can update their `~/.config/awesome/rc.lua`
+to include the following:
+
+```lua
+    -- Brightness
+    awful.key({ }, "XF86MonBrightnessUp", function () os.execute("backlight up") end,
+              {description = "Increase brightness", group = "hotkeys"}),
+    awful.key({ }, "XF86MonBrightnessDown", function () os.execute("backlight down") end,
+              {description = "Decrease brightness", group = "hotkeys"}),
+```
+
+Reload Awesome and your brightness keys will now work as expected.
+
+[Awesome WM]:      https://awesomewm.org/
 [License]:         https://en.wikipedia.org/wiki/ISC_license
 [License Badge]:   https://img.shields.io/badge/License-ISC-blue.svg
 [Travis]:          https://travis-ci.org/troglobit/backlight
