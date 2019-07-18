@@ -22,22 +22,30 @@
 Simple program to control backlight brightness of laptops in Linux.
 .Sh SYNOPSYS
 .Nm
-.Op Ar up
-.Op Ar down
-.Op Ar help
+.Op Fl hv
+.Op Ar up | down
 .Sh DESCRIPTION
 .Nm
-has only two arguments:
-.Cm up
-and
-.Cm down ,
-which adjusts the brightness up or down, respectively.  Without
-arguments the current value read from
-.Pa /sys/class/backlight/*/brightness
-is displayed.
+supports one display, the first one found when scanning
+.Pa /sys/class/backlight/*/brightness .
 .Pp
 Brightness is controlled using an exponential scale to provide a smooth
 transition from max to min.
+.Sh OPTIONS
+.Bl -tag -width down -compact
+.It Fl h
+Show program help text
+.It Fl v
+Show program version
+.El
+.Sh COMMANDS
+.Bl -tag -width down -compact
+.It up
+Increase brightness
+.It down
+Decrease brightness
+.Sh FILES
+.Pa /sys/class/backlight/*/brightness .
 .Sh SEE ALSO
 .Lk https://github.com/troglobit/backlight/
 .Sh AUTHORS
