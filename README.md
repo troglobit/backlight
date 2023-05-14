@@ -29,6 +29,29 @@ Brightness is controlled using an exponential scale to provide a smooth
 transition from max to min.
 
 
+Build & Install
+---------------
+
+This is a GNU configure based project, so unless you are building it
+directly from GIT, you can:
+
+```sh
+./configure
+make
+sudo make install
+sudo adduser $LOGNAME video
+```
+
+The install phase adds the required `90-backlight.rules` to udev so
+that the system grants write privileges to members of the video group
+to control the display backlight.  For the changes to take effect you
+have to reboot the system.
+
+> **Note:** if you are building from GIT, you have to manually create
+> the configure script and Makefile.in file: `./autogen.sh` helps you
+> but you have to have the autoconf and automake tools installed.
+
+
 Setup in Awesome
 ----------------
 
