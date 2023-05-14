@@ -13,20 +13,20 @@
 .\" ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 .\" OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 .\"
-.Dd Jul 18, 2019
+.Dd May 14, 2023
 .Dt backlight 1
-.Os "backlight (0.1)"
 .Sh NAME
 .Nm backlight
 .Nd
-Simple program to control backlight brightness of laptops in Linux.
+control backlight brightness of laptops in Linux
 .Sh SYNOPSYS
 .Nm
 .Op Fl hv
 .Op Ar up | down
 .Sh DESCRIPTION
 .Nm
-supports one display, the first one found when scanning
+supports one display, the built-in laptop display.  It uses the first
+one it finds when scanning
 .Pa /sys/class/backlight/*/brightness .
 .Pp
 Brightness is controlled using an exponential scale to provide a smooth
